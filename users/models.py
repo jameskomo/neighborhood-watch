@@ -14,7 +14,7 @@ neighborhood = (
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    neighborhood = models.CharField(max_length=25,choices=neighborhood)
+    neighborhood = models.CharField(max_length=25,choices=neighborhood, default='Red Ville')
 
     def __str__(self):
         return f'{self.user.username} Profile'

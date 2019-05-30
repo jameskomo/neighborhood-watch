@@ -59,7 +59,7 @@ class ContactDetailView(DetailView):
 # Create Views for Post, Business, Neighborhood and Contact
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'post_image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

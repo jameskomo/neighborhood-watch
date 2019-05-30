@@ -7,7 +7,7 @@ from users.models import neighborhood
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    neighborhood = forms.ChoiceField(choices=neighborhood)
+    
 
     class Meta:
         model = User
@@ -16,7 +16,7 @@ class UserRegisterForm(UserCreationForm):
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
-    neighborhood = forms.ChoiceField(choices=neighborhood)
+    
     
 
     class Meta:
@@ -25,6 +25,8 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
+    neighborhood = forms.ChoiceField(choices=neighborhood)
+
     class Meta:
         model = Profile
-        fields = ['image']
+        fields = ['image', 'neighborhood']
