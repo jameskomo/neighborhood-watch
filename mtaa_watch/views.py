@@ -65,6 +65,22 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class NeighborhoodCreateView(LoginRequiredMixin, CreateView):
+    model = Neighborhood
+    fields = ['neighborhood_name', 'neighborhood_location', 'occupants_count', 'neighborhood_image']
+
+    def form_valid(self, form):
+        form.instance.admin = self.request.user
+        return super().form_valid(form)
+
+class BusinessCreateView(LoginRequiredMixin, CreateView):
+    model = Business
+    fields = ['business_name', 'business_location', 'business_email', 'business_description', 'business_image']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
