@@ -27,7 +27,7 @@ from . import views
 urlpatterns = [
     path('', PostListView.as_view(), name='mtaa_watch-home'),
     path('business/', BusinessListView.as_view(), name='business-home'),
-    path('neighborhood/', BusinessListView.as_view(), name='business-home'),
+    path('neighborhood/', NeighborhoodListView.as_view(), name='neighborhood-home'),
     path('contact/', BusinessListView.as_view(), name='contact-home'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('neighborhood/<int:pk>/', NeighborhoodDetailView.as_view(), name='neighborhood-detail'),

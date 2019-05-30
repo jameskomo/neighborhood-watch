@@ -60,13 +60,15 @@
         </div>
         <div class="col-md-4">
           <div class="content-section">
-            <h3>Mtaa Updates</h3>
+            <h3>Mtaa Watch</h3>
             <p class='text-muted'>About your Neighborhood
               <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light"><a href="{% url 'mtaa_watch-home' %}">Mtaa Updates</a></li>
+                <li class="list-group-item list-group-item-light"><a href="{% url 'contact-home' %}">Key Contacts</a></li>
+                <li class="list-group-item list-group-item-light"><a href="{% url 'business-home' %}">Business Listing</a></li>
+                <li class="list-group-item list-group-item-light"><a href="{% url 'neighborhood-home' %}">Know your Neighborhoods</a></li>
                 <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
+                <li class="list-group-item list-group-item-light">Calendar of Events</li>
               </ul>
             </p>
           </div>
