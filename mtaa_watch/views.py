@@ -93,7 +93,7 @@ class ContactCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'post_image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -121,15 +121,29 @@ class NeighborhoodUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView
 
 class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Business
-    fields = ['neighborhood_name', 'neighborhood_location', 'occupants_count', 'neighborhood_image']
+    fields = ['business_name', 'business_location', 'business_email', 'business_description', 'business_image']
 
     def form_valid(self, form):
-        form.instance.admin = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
         neighborhood = self.get_object()
-        if self.request.user == neighborhood.admin:
+        if self.request.user == business.user:
+            return True
+        return False
+
+class ContactUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Contact
+    ields = ['contact_name', 'contact_email', 'contact_number', 'contact_address', 'contact_logo']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        business = self.get_object()
+        if self.request.user == contact.user:
             return True
         return False
 
