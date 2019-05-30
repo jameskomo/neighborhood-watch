@@ -28,14 +28,14 @@ class Neighborhood(models.Model):
         return self.neighborhood_name
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'pk': self.pk})
+        return reverse('neighborhood-detail', kwargs={'pk': self.pk})
 
 class Business(models.Model):
     business_name = models.CharField(max_length=100)
     business_location = models.CharField(max_length=100)
     business_email = models.EmailField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=False)
     business_description=models.TextField()
     business_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
 
@@ -43,7 +43,7 @@ class Business(models.Model):
         return self.business_name
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'pk': self.pk})
+        return reverse('business-detail', kwargs={'pk': self.pk})
 
 class Contact(models.Model):
     contact_name = models.CharField(max_length=100)
@@ -56,4 +56,4 @@ class Contact(models.Model):
         return self.contact_name
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'pk': self.pk})
+        return reverse('contact-detail', kwargs={'pk': self.pk})

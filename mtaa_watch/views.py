@@ -27,19 +27,19 @@ class PostListView(ListView):
 
 class NeighborhoodListView(ListView):
     model = Neighborhood
-    template_name = 'mtaa_watch/home.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'mtaa_watch/neighborhood_home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'neighborhoods'
     ordering = ['business_location']
     
 class BusinessListView(ListView):
     model = Business
-    template_name = 'mtaa_watch/home.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'mtaa_watch/business_home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'businesses'
     ordering = ['business_name']
 
 class ContactListView(ListView):
     model = Contact
-    template_name = 'mtaa_watch/home.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'mtaa_watch/contact_home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'contacts'
     ordering = ['contact_name']
 
