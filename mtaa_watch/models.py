@@ -35,7 +35,7 @@ class Business(models.Model):
     business_location = models.CharField(max_length=100)
     business_email = models.EmailField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=False)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True, blank=True)
     business_description=models.TextField()
     business_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
 

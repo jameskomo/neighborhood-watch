@@ -128,7 +128,7 @@ class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
     def test_func(self):
-        neighborhood = self.get_object()
+        business = self.get_object()
         if self.request.user == business.user:
             return True
         return False
@@ -158,6 +158,35 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+class BusinessDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Business
+    success_url = '/'
+
+    def test_func(self):
+        business = self.get_object()
+        if self.request.user == business.user:
+            return True
+        return False
+
+class Neighborhood(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Neighborhood
+    success_url = '/'
+
+    def test_func(self):
+        neighborhood = self.get_object()
+        if self.request.user == neighborhood.admin:
+            return True
+        return False
+
+class Contact(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Contact
+    success_url = '/'
+
+    def test_func(self):
+        contact = self.get_object()
+        if self.request.user == contact.user:
+            return True
+        return False
 
 def about(request):
     return render(request, 'mtaa_watch/about.html', {'title': 'About'})
