@@ -1,5 +1,12 @@
 {% extends "mtaa_watch/base.html" %}
 {% block content %}
+<nav class="navbar navbar-light bg-faded justify-content-between">
+  <a class="navbar-brand">Business Listing</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search Business">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
     {% for business in businesses %}
     
         <article class="media content-section">

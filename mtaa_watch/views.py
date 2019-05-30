@@ -121,7 +121,7 @@ class NeighborhoodUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView
 
 class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Business
-    fields = ['business_name', 'business_location', 'business_email', 'business_description', 'business_image']
+    fields = ['business_name', 'business_location', 'business_email', 'business_description', 'business_image', 'neighborhood']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
