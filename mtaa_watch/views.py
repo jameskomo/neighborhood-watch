@@ -17,6 +17,7 @@ def home(request):
     }
     return render(request, 'mtaa_watch/home.html', context)
 
+# List Views for Post, Business and Neighborhood
 
 class PostListView(ListView):
     model = Post
@@ -36,17 +37,17 @@ class BusinessListView(ListView):
     context_object_name = 'businesses'
     ordering = ['business_name']
 
-
-
+# Detail Views for Post, Business and Neighborhood
 class PostDetailView(DetailView):
     model = Post
 
 class NeighborhoodDetailView(DetailView):
     model = Neighborhood
+
 class BusinessDetailView(DetailView):
     model = Business
 
-
+# Create Views for Post, Business and Neighborhood
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
