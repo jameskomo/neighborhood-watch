@@ -8,7 +8,7 @@ from django.views.generic import (
     DeleteView
 )
 from django.contrib.auth.models import User
-from .models import Post, Neighborhood, Business
+from .models import Post, Neighborhood, Business, Contact
 
 
 def home(request):
@@ -37,6 +37,12 @@ class BusinessListView(ListView):
     context_object_name = 'businesses'
     ordering = ['business_name']
 
+class ContactListView(ListView):
+    model = Contact
+    template_name = 'mtaa_watch/home.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'contacts'
+    ordering = ['contact_name']
+
 # Detail Views for Post, Business and Neighborhood
 class PostDetailView(DetailView):
     model = Post
@@ -46,6 +52,9 @@ class NeighborhoodDetailView(DetailView):
 
 class BusinessDetailView(DetailView):
     model = Business
+
+class ContactDetailView(DetailView):
+    model = Contact
 
 # Create Views for Post, Business and Neighborhood
 class PostCreateView(LoginRequiredMixin, CreateView):
