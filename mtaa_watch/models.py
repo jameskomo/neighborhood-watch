@@ -50,7 +50,7 @@ class Contact(models.Model):
     contact_email = models.EmailField()
     contact_number=models.TextField()
     contact_address = models.TextField()
-    contact_logo = models.ImageField(default="default.jpeg", upload_to = 'images/')
+    contact_logo = models.ImageField(default="default.jpeg", upload_to = 'media/images/')
 
     def __str__(self):
         return self.contact_name
