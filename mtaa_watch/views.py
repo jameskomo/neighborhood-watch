@@ -105,7 +105,35 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
+class NeighborhoodUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Neighborhood
+    fields = ['neighborhood_name', 'neighborhood_location', 'occupants_count', 'neighborhood_image']
 
+    def form_valid(self, form):
+        form.instance.admin = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        neighborhood = self.get_object()
+        if self.request.user == neighborhood.admin:
+            return True
+        return False
+
+class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Business
+    fields = ['neighborhood_name', 'neighborhood_location', 'occupants_count', 'neighborhood_image']
+
+    def form_valid(self, form):
+        form.instance.admin = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        neighborhood = self.get_object()
+        if self.request.user == neighborhood.admin:
+            return True
+        return False
+
+# Delete Class Views for Post, Business, Neighborhood and Contact
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     success_url = '/'
