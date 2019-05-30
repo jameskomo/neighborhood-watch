@@ -29,7 +29,7 @@ class NeighborhoodListView(ListView):
     model = Neighborhood
     template_name = 'mtaa_watch/neighborhood_home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'neighborhoods'
-    ordering = ['business_location']
+    ordering = ['neighborhood_name']
     
 class BusinessListView(ListView):
     model = Business
@@ -121,7 +121,7 @@ class NeighborhoodUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView
 
 class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Business
-    fields = ['business_name', 'business_location', 'business_email', 'business_description', 'business_image', 'neighborhood']
+    fields = ['business_name', 'business_location', 'business_email', 'business_description', 'business_image']
 
     def form_valid(self, form):
         form.instance.user = self.request.user

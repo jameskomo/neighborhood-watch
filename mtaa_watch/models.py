@@ -23,6 +23,7 @@ class Neighborhood(models.Model):
     occupants_count = models.IntegerField()
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
     neighborhood_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
+    
 
     def __str__(self):
         return self.neighborhood_name
