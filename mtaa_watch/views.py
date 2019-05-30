@@ -17,7 +17,7 @@ def home(request):
     }
     return render(request, 'mtaa_watch/home.html', context)
 
-# List Views for Post, Business and Neighborhood
+# List Views for Post, Business, Neighborhood and Contact
 
 class PostListView(ListView):
     model = Post
@@ -43,7 +43,7 @@ class ContactListView(ListView):
     context_object_name = 'contacts'
     ordering = ['contact_name']
 
-# Detail Views for Post, Business and Neighborhood
+# Detail Views for Post, Business, Neighborhood and Contact
 class PostDetailView(DetailView):
     model = Post
 
@@ -56,7 +56,7 @@ class BusinessDetailView(DetailView):
 class ContactDetailView(DetailView):
     model = Contact
 
-# Create Views for Post, Business and Neighborhood
+# Create Views for Post, Business, Neighborhood and Contact
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
@@ -81,6 +81,15 @@ class BusinessCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class ContactCreateView(LoginRequiredMixin, CreateView):
+    model = Contact
+    fields = ['contact_name', 'contact_email', 'contact_number', 'contact_address', 'contact_logo']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+# Update Class Views for Post, Business, Neighborhood and Contact
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
