@@ -9,6 +9,7 @@ from django.views.generic import (
 )
 from django.contrib.auth.models import User
 from .models import Post, Neighborhood, Business, Contact
+from .filters import ContactFilter, NeighborhoodFilter, BusinessFilter
 
 
 def home(request):
@@ -190,3 +191,22 @@ class ContactDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def about(request):
     return render(request, 'mtaa_watch/about.html', {'title': 'About'})
+
+
+# Searching Models
+
+
+def contactsearch(request):
+    contact_list = Contact.objects.all()
+    contact_filter = ContactFilter(request.GET, queryset=contact_list)
+    return render(request, 'mtaa_watch/contact-search.html', {'filter': contact_filter})
+
+def businesssearch(request):
+    business_list = Business.objects.all()
+    business_filter = BusinessFilter(request.GET, queryset=business_list)
+    return render(request, 'mtaa_watch/business-search.html', {'filter': business_filter})
+
+def neighborhoodsearch(request):
+    neighborhood_list = Neighborhood.objects.all()
+    neighborhood_filter = NeighborhoodFilter(request.GET, queryset=neighborhood_list)
+    return render(request, 'mtaa_watch/neighborhood-search.html', {'filter': neighborhood_filter})

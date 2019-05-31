@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 from .views import (
     PostListView,
     PostDetailView,
@@ -46,4 +47,7 @@ urlpatterns = [
     path('business/<int:pk>/delete/', BusinessDeleteView.as_view(), name='business-delete'),
     path('contact/<int:pk>/delete/', ContactDeleteView.as_view(), name='contact-delete'),
     path('about/', views.about, name='mtaa_watch-about'),
+    url(r'^search/$', views.contactsearch, name='contact-search'),
+    url(r'^searchbusiness/$', views.businesssearch, name='business-search'),
+    url(r'^searchneighborhood/$', views.neighborhoodsearch, name='neighborhood-search'),
 ]
