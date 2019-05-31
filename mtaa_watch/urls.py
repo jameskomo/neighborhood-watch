@@ -9,7 +9,7 @@ from .views import (
     NeighborhoodDetailView,
     NeighborhoodCreateView,
     NeighborhoodUpdateView,
-    # NeighborhoodDeleteView,
+    NeighborhoodDeleteView,
     BusinessListView,
     BusinessDetailView,
     BusinessCreateView,
@@ -19,7 +19,7 @@ from .views import (
     ContactDetailView,
     ContactCreateView,
     ContactUpdateView,
-    # ContactDeleteView,
+    ContactDeleteView,
     
 )
 from . import views
@@ -42,8 +42,8 @@ urlpatterns = [
     path('business/<int:pk>/update/', BusinessUpdateView.as_view(), name='business-update'),
     path('contact/<int:pk>/update/', ContactUpdateView.as_view(), name='contact-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
-    # path('neighborhood/<int:pk>/delete/', NeighborhoodDeleteView.as_view(), name='neighborhood-delete'),
+    path('neighborhood/<int:pk>/delete/', NeighborhoodDeleteView.as_view(), name='neighborhood-delete'),
     path('business/<int:pk>/delete/', BusinessDeleteView.as_view(), name='business-delete'),
-    # path('contact/<int:pk>/delete/', ContactDeleteView.as_view(), name='contact-delete'),
+    path('contact/<int:pk>/delete/', ContactDeleteView.as_view(), name='contact-delete'),
     path('about/', views.about, name='mtaa_watch-about'),
 ]

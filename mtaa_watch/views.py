@@ -168,7 +168,7 @@ class BusinessDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-class Neighborhood(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class NeighborhoodDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Neighborhood
     success_url = '/'
 
@@ -178,7 +178,7 @@ class Neighborhood(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-class Contact(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class ContactDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Contact
     success_url = '/'
 
