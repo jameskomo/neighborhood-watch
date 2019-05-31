@@ -134,16 +134,16 @@ class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return False
 
 class ContactUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Contact, Neighborhood
-    ields = ['contact_name', 'contact_email', 'contact_number', 'contact_address', 'contact_logo']
+    model = Contact
+    fields = ['contact_name', 'contact_email', 'contact_number', 'contact_address', 'contact_logo']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
-        contact = self.get_object()
-        if self.request.user == user:
+        contact = self.get_object() 
+        if self.request.user == contact.user:
             return True
         return False
 
