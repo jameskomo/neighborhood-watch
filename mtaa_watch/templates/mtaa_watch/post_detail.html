@@ -15,7 +15,7 @@
       </div>
       <h2 class="article-title">{{ object.title }}</h2>
       <p class="article-content">{{ object.content }}</p>
-      <p class="article-content">{{ object.post_image }}</p>
+      <img class="fluid-image" src="{{ post.post_image.url }}">
     </div>
   </article>
 {% endblock content %}

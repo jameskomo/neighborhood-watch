@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'mtaa_watch.apps.MtaaWatchConfig',
     'crispy_forms',
+    'bootstrap4',
     'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
