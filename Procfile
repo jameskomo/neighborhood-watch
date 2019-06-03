@@ -1,0 +1,1 @@
+web: gunicorn komo_neighborhood_watch.wsgi --log-file -
